@@ -1,0 +1,8 @@
+{
+  "winSettings": {
+    "keyboard": {
+      // Default value is 1, but it's better to set aggressive short delay = 0
+      "standardRepeatDelay": 0 
+    }
+  }
+}
