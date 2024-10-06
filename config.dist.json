@@ -2,7 +2,13 @@
   "winSettings": {
     "keyboard": {
       // Default value is 1, but it's better to set aggressive short delay = 0
-      "standardRepeatDelay": 0 
+      "standardRepeatDelay": 0,
+      "standardSpeed": 31,
+      "filterKeys": {
+        "enabled": true, // When enabled these settings overrides the standard settings
+        "repeatDelay": 200, // 200ms repeat
+        "repeatInterval": 10 // time interval between key repeats in ms (60 char/sec max)
+      }
     }
   }
 }

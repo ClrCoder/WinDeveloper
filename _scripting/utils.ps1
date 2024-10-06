@@ -12,16 +12,29 @@ public class Win32 {
         out uint pvParam,
         uint fWinIni);
 
-    public static bool SystemParametersInfoNoRef(
+    [DllImport("user32.dll", CharSet=CharSet.Auto, EntryPoint="SystemParametersInfo")]
+    public static extern bool SystemParametersInfoNoRef(
         uint uiAction,
         uint uiParam,
-        uint fWinIni){
-        return SystemParametersInfo(
-            uiAction,
-            uiParam,
-            out System.Runtime.CompilerServices.Unsafe.NullRef<uint>(),
-            fWinIni);    
-    }
+        IntPtr zero,
+        uint fWinIni);
+
+    [DllImport("user32.dll", CharSet=CharSet.Auto, EntryPoint="SystemParametersInfo")]
+    public static extern bool SystemParametersInfoFilterKeys(
+        uint uiAction,
+        uint uiParam,
+        ref FILTERKEYS pvParam,
+        uint fWinIni);
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public struct FILTERKEYS {
+  public uint cbSize;
+  public uint dwFlags;
+  public uint iWaitMSec;
+  public uint iDelayMSec;
+  public uint iRepeatMSec;
+  public uint iBounceMSec;
 }
 "@
 }
