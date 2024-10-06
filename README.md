@@ -7,8 +7,8 @@ Default windows settings limiting typing/editing/navigation speed in the text ed
 Default settings is **250 ms** delay before repeating of a pressed key and **30** repeats/seconds rate.  
 With a good keyboard, human reaction allows precise control with a **200 ms** delay and **60** repeats/second, which can significantly speed up typing, navigation, and character deletion.
 
-**Important**
-You need to tune the latency of your system, otherwise you may encounter the **false repeat** problem with these aggressive settings.
+> [!IMPORTANT]
+> You need to tune the latency of your system, otherwise you may encounter the **false repeat** problem with these aggressive settings.
 
 | Setting                                            | Values                                                           |
 | ---------------------------------------------------| ---------------------------------------------------------------- |
