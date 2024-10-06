@@ -34,7 +34,7 @@ function Set-KeyboardRepeatDelay {
         0x0017, # SPI_SETKEYBOARDDELAY
         $Delay,
         [IntPtr]::Zero,
-        0
+        3 # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
     )
 
     if ($result) {
@@ -72,7 +72,7 @@ function Set-KeyboardSpeed {
         0x000B, # SPI_SETKEYBOARDSPEED
         $RepeatRate,
         [IntPtr]::Zero,
-        0
+        3 # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
     )
 
     if ($result) {
@@ -118,7 +118,7 @@ function Set-FilterKeysSettings {
         0x0032, # SPI_GETFILTERKEYS
         0,
         [ref]$filterKeys,
-        0
+        3 # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
     )
 
     if (!$result) {

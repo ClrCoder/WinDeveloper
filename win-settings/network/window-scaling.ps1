@@ -6,9 +6,6 @@ param()
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $true
 
-.\win-settings\keyboard.ps1
-.\win-settings\network\window-scaling.ps1
+. "$PSScriptRoot/../../_scripting/utils.ps1"
 
-.\bloatware\hp.ps1
-
-.\bloatware\intel.ps1
+netsh interface tcp set global autotuninglevel=highlyrestricted

@@ -42,15 +42,44 @@ public struct FILTERKEYS {
 function Get-WinDeveloperConfig {
     $configFilePath = Resolve-Path "$PSScriptRoot/../config.json"
     $fileDetails = Get-ChildItem -Path $configFilePath
-    Write-Verbose "$($fileDetails.LastWriteTimeUtc)"
-    if ($fileDetails.LastWriteTimeUtc -ne $script:WinDeveloperConfigLastWriteTime) {
+    if ($fileDetails.LastWriteTimeUtc -ne $global:__WinDeveloper__ConfigLastWriteTime) {
         Write-Verbose "Reading WinDeveloper config file."
-        $script:WinDeveloperConfigLastWriteTime = $fileDetails.LastWriteTimeUtc
+        $global:__WinDeveloper__ConfigLastWriteTime = $fileDetails.LastWriteTimeUtc
         # Here is the extension point to avoid multiple fetch of the file if it wasn't changed.
-        $script:WinDeveloperConfig = Get-Content -Path "$PSScriptRoot/../config.json" | ConvertFrom-Json -AsHashtable -Depth 10
+        $global:__WinDeveloper__Config = Get-Content -Path "$PSScriptRoot/../config.json" | ConvertFrom-Json -AsHashtable -Depth 10
         
-        Write-Verbose ($script:WinDeveloperConfig | ConvertTo-Json -Depth 10)
+        Write-Verbose ($global:__WinDeveloper__Config | ConvertTo-Json -Depth 10)
     }
     
-    return $script:WinDeveloperConfig
+    return $global:__WinDeveloper__Config
+}
+
+function Stop-AndDisableService {
+    param(
+        [string]$ServiceName,
+        [switch]$AllowManualStart
+
+    )
+
+    $svc = Get-Service $ServiceName -ErrorAction SilentlyContinue   
+    if ($null -eq $svc) {
+        Write-Verbose "Service $ServiceName not found"
+        return
+    }
+    if ($svc.Status -eq "Running") {
+        Write-Verbose "Stopping service $ServiceName"
+        Stop-Service $ServiceName
+    }
+    if ($AllowManualStart) {
+        if ($svc.StartType -ne "Manual") {
+            Write-Verbose "Making service $ServiceName to be started manually"
+            Set-Service $ServiceName -StartupType Manual
+        }
+    }
+    else {
+        if ($svc.StartType -ne "Disabled") {
+            Write-Verbose "Disabling service $ServiceName"
+            Set-Service $ServiceName -StartupType Disabled
+        }
+    }
 }
