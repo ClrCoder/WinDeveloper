@@ -118,7 +118,7 @@ function Set-FilterKeysSettings {
         0x0032, # SPI_GETFILTERKEYS
         0,
         [ref]$filterKeys,
-        3 # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
+        0
     )
 
     if (!$result) {
@@ -144,7 +144,7 @@ function Set-FilterKeysSettings {
         0x0033, # SPI_SETFILTERKEYS
         0,
         [ref]$filterKeys,
-        0
+        3 # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
     )
 
     if ($result) {
