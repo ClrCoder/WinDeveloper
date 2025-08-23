@@ -6,9 +6,9 @@ param()
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $true
 
-.\win-settings\keyboard.ps1
-.\win-settings\network\window-scaling.ps1
+& $PSScriptRoot\win-settings\keyboard.ps1
+& $PSScriptRoot\win-settings\network\window-scaling.ps1
 
-.\bloatware\hp.ps1
+& $PSScriptRoot\bloatware\hp.ps1
 
-.\bloatware\intel.ps1
+& $PSScriptRoot\bloatware\intel.ps1
