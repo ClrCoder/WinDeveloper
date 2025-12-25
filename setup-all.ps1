@@ -10,5 +10,5 @@ $PSNativeCommandUseErrorActionPreference = $true
 .\win-settings\network\window-scaling.ps1
 
 .\bloatware\hp.ps1
-
 .\bloatware\intel.ps1
+.\bloatware\microsoft.ps1

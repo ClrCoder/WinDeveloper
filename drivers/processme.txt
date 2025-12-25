@@ -1,0 +1,2 @@
+DUC install:
+winget install -e --id Intel.IntelDriverAndSupportAssistant
