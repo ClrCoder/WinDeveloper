@@ -202,4 +202,5 @@ if ($null -ne $config.winSettings.keyboard.filterKeys.enabled) {
 }
 
 
-
+# TODO: 
+# Add explicit removal of the key accepted sounds, as by default they are enabled in latest windows

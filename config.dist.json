@@ -10,5 +10,24 @@
         "repeatInterval": 10 // time interval between key repeats in ms (60 char/sec max)
       }
     }
+  },
+  "bloatware": {
+    "hp": {
+      "disable": true // allows to block HP bloatware from start
+    },
+    "intel": {
+      "disable": true // allows to block intel bloatware from start
+    },
+    "windowsSearch": {
+      "disable": true // disables Windows Search components and Start-menu web search results
+    }
+  },
+  "software": {
+    "wsl2": {
+      "storagePath": "E:\\WSL" // Custom path for WSL2 VHDX storage (null to use default)
+    },
+    "dockerDesktop": {
+      "storagePath": "E:\\WSL\\Docker" // Custom path for Docker Desktop data
+    }
   }
 }

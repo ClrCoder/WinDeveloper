@@ -12,3 +12,4 @@ $PSNativeCommandUseErrorActionPreference = $true
 & $PSScriptRoot\bloatware\hp.ps1
 & $PSScriptRoot\bloatware\intel.ps1
 & $PSScriptRoot\bloatware\microsoft.ps1
+& $PSScriptRoot\bloatware\windows-search.ps1
