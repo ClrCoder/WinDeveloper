@@ -37,6 +37,21 @@ if ($config.bloatware.intel.disable) {
     
     # Intel Dynamic Tuning Technology (telemetry)
     Stop-AndDisableService "dptftcs"
+
+    # Intel Analytics Service (telemetry)
+    Stop-AndDisableService "Intel Analytics Service"
+
+    # Intel Connectivity Network Service (telemetry)
+    Stop-AndDisableService "Intel Connectivity Network Service"
+
+    # Intel Dynamic Bandwidth Management (telemetry)
+    Stop-AndDisableService "IDBWM"
+
+    # Intel Provider Data Helper Service (telemetry)
+    Stop-AndDisableService "Intel Provider Data Helper Service"
+
+    # IntelConnect Service (telemetry)
+    Stop-AndDisableService "IntelConnectService"
     
     # Intel Management Engine WMI (usually unnecessary)
     Stop-AndDisableService "WMIRegistrationService" -AllowManualStart
